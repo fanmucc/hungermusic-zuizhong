@@ -155,7 +155,7 @@ var Fm = {
     loadMusic(callback) {
         var _this = this
         console.log('aaa')
-        $.getJSON('http://jirenguapi.applinzi.com/fm/getSong.php',{channel:this.channelId}).done(function(ret) {
+        $.getJSON('//jirenguapi.applinzi.com/fm/getSong.php',{channel:this.channelId}).done(function(ret) {
             console.log(ret['song'][0])
             console.log(ret)
             _this.song = ret['song'][0]
@@ -168,7 +168,7 @@ var Fm = {
     lodLyric() {
         var _this = this
         console.log('aaa')
-        $.getJSON('http://jirenguapi.applinzi.com/fm/getLyric.php',{sid:this.song.sid}).done(function(ret) {
+        $.getJSON('//jirenguapi.applinzi.com/fm/getLyric.php',{sid:this.song.sid}).done(function(ret) {
             console.log(ret.lyric)
             console.log('歌词')
             var lyric = ret.lyric
@@ -200,7 +200,7 @@ var Fm = {
     },
     // 时间 与进度条 歌词
     updateStatus() {
-        var min = Math.floor(this.audio.currentTime/60) s
+        var min = Math.floor(this.audio.currentTime/60) 
         var second = Math.floor(Fm.audio.currentTime%60)+''
         second = second.length === 2?second:'0'+second
         this.$container.find('.current-time').text(min+':'+second)
