@@ -140,7 +140,6 @@ var Fm = {
         this.$container.find('.btn-next').on('click',function() {
             _this.loadMusic()
         })
-
         this.audio.addEventListener('play',function() {
             console.log('paly')
             clearInterval(_this.statusClock)
@@ -186,6 +185,7 @@ var Fm = {
             _this.lyricObj = lyricObj
         })
     },
+    // 页面交互 歌曲信息 背景图片
     setMusic() {
         console.log('setMusic...')
         console.log(this.song)
@@ -196,20 +196,25 @@ var Fm = {
         this.$container.find('.detail .author').text(this.song.artist)
         this.$container.find('.detail .tag').text(this.channelName)
         this.$container.find('.btn-play').removeClass('icon-play').addClass('icon-pause')
+        
     },
+    // 时间 与进度条 歌词
     updateStatus() {
         var min = Math.floor(this.audio.currentTime/60) 
         var second = Math.floor(Fm.audio.currentTime%60)+''
-        sencond = second.length === 2?second:'0'+second
+        second = second.length === 2 ? second : '0' + second
         this.$container.find('.current-time').text(min+':'+second)
+        // 渲染进度条
         this.$container.find('.bar-progress').css('width',this.audio.currentTime/this.audio.duration*100+'%')
-        console.log('status')
+        // 进度条渲染成功后  可以进行拖拽
+
         var line = this.lyricObj['0'+min+':'+ second]
         if(line) {
             this.$container.find('.lyric p').text(line)
         }
         console.log(this.lyricObj['0'+min+':'+ second])
     }
+    
 }
 Footer.init()
 Fm.init()
