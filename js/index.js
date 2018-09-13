@@ -200,7 +200,7 @@ var Fm = {
     },
     // 时间 与进度条 歌词
     updateStatus() {
-        var min = Math.floor(this.audio.currentTime/60) s
+        var min = Math.floor(this.audio.currentTime/60) 
         var second = Math.floor(Fm.audio.currentTime%60)+''
         second = second.length === 2?second:'0'+second
         this.$container.find('.current-time').text(min+':'+second)
